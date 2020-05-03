@@ -1,0 +1,14 @@
+# meta
+LICENSE
+*.md
+**/Dockerfile
+docker-compose.yml
+# python
+**/bin
+**/lib
+**/include
+**/Share
+**/*venv
+**/.Python
+**/__pycache__
+**/*.pyc
