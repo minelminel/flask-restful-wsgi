@@ -7,7 +7,11 @@ RUN yum install -y epel-release gcc tree && \
     yum install -y httpd httpd-devel && \
     yum clean all
 
-RUN python3 -m pip install -U pip setuptools wheel mod_wsgi
+RUN python3 -m pip install -U \
+    pip setuptools wheel \
+    mod_wsgi \
+    flask \
+    flask-restful
 
 # Simple startup script to avoid some issues observed with container restart (CentOS tip)
 COPY setup/run-apache-httpd.sh /run-apache-httpd.sh
@@ -20,8 +24,6 @@ COPY setup/app.conf /etc/httpd/conf.d/welcome.conf
 
 WORKDIR /var/www/html/
 COPY . .
-
-RUN python3 -m pip install -r requirements.txt
 
 EXPOSE 80
 
